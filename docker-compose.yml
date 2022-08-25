@@ -1,5 +1,9 @@
 version: '3.8'
 
+networks:
+  hie:
+    external: true
+
 services:
   ### 
   # Traefik Reverse Proxy
@@ -54,7 +58,8 @@ services:
       MYSQL_DATABASE: "openmrs"
       MYSQL_ROOT_PASSWORD: "root"
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./mysql-data:/var/lib/mysql
+      - ./sigdep3/db/sans_les_données.sql:/docker-entrypoint-initdb.d/0_init.sql
     ports:
       - "3306:3306"
       
@@ -197,7 +202,7 @@ services:
     ports:
       - 8082:8080
     volumes:
-      - cr-data:/data/hapi
+      - ./cr-data:/data/hapi
 
   es:
     container_name: es
@@ -214,7 +219,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - es:/usr/share/elasticsearch/data
+      - ./es:/usr/share/elasticsearch/data
     networks:
       - hie
     healthcheck:

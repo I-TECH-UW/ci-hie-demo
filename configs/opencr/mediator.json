@@ -1,6 +1,6 @@
 {
-  "urn": "urn:mediator:bw_clientregistry",
-  "version": "0.1.1",
+  "urn": "urn:mediator:bw_client-registry",
+  "version": "0.0.1",
   "name": "Client Registry",
   "description": "Open Client Registry",
   "config": {

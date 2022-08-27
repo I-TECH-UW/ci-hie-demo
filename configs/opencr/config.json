@@ -1,10 +1,4 @@
-
-
 {
-  "auth": {
-    "secret": "3084e343-71bc-4247-86e4-ea210af89c28",
-    "tokenDuration": 5400
-  },
   "app": {
     "port": 3000,
     "installed": false
@@ -19,13 +13,10 @@
     },
     "register": true
   },
-  "cronJobs": {
-    "patientReprocessing": "0 21 * * *"
-  },
   "fhirServer": {
+    "baseURL": "http://opencr-fhir:8080/fhir",
     "username": "hapi",
-    "password": "hapi",
-    "baseURL": "http://opencr-fhir:8080/fhir"
+    "password": "hapi"
   },
   "elastic": {
     "server": "http://es:9200",
@@ -34,40 +25,28 @@
     "max_compilations_rate": "10000/1m",
     "index": "patients"
   },
-  "codes": {
-    "goldenRecord": "5c827da5-4858-4f3d-a50c-62ece001efea"
-  },
   "structureDefinition": {
-    "uri": "http://openclientregistry.org/fhir",
     "reportRelationship": "patientreport"
   },
   "matching": {
     "tool": "elasticsearch"
   },
-  "clients": [
-    {
-      "id": "lis",
-      "displayName": "Lab Info System"
-    }
-  ],
   "systems": {
-    "CRBaseURI": "http://openclientregistry.org/fhir",
-    "internalid": {
-      "uri": [
-        "http://moh.ci.org/ext/identifier/nationalid"
-      ],
-      "displayName": "Internal ID"
+    "openmrs": {
+      "uri": "http://clientregistry.org/openmrs"
     },
-    "nationalid": {
-      "uri": "http://moh.ci.org/ext/nationalid",
-      "displayName": "National ID"
+    "dhis2": {
+      "uri": "http://clientregistry.org/dhis2"
+    },
+    "lims": {
+      "uri": "http://clientregistry.org/lims"
     },
     "brokenMatch": {
-      "uri": "http://clientregistry.org/brokenMatch"
+      "uri": "http://ihris.org/CR/brokenMatch"
     }
   },
   "sync": {
-    "lastFHIR2ESSync": "2022-07-08T03:45:49"
+    "lastFHIR2ESSync": "1970-01-01T00:00:06"
   },
   "__comments": {
     "matching.tool": "this tells if the app should use mediator algorithms or elasticsearch algorithms for matching, two options mediator and elasticsearch"

@@ -1,9 +1,9 @@
 {
-  "version": "1.13.2",
-  "minimumCoreVersion": "5.2.0",
+  "version": "1.14.4",
+  "minimumCoreVersion": "5.0.0",
   "protocol": "https",
-  "host": "10.171.5.12",
-  "hostPath": "/openhim-api",
+  "host": "localhost",
+  "hostPath": "",
   "port": "",
   "title": "CI HIE Demo Admin Console",
   "footerTitle": "OpenHIM Administration Console",

@@ -4,7 +4,7 @@
   "protocol": "https",
   "host": "localhost",
   "hostPath": "/openhim-api",
-  "port": "",
+  "port": "8080",
   "title": "CI HIE Admin Console",
   "footerTitle": "OpenHIM Administration Console",
   "footerPoweredBy": "<a href='http://openhim.org/' target='_blank'>Powered by OpenHIM</a>",

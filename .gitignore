@@ -1,1 +1,5 @@
 .DS_Store
+
+configs/traefik/certs/*.crt
+configs/traefik/certs/*.key
+configs/traefik/certs/*.pem

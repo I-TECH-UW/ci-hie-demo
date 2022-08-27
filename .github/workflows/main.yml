@@ -1,0 +1,60 @@
+name: CI
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build-test:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Pull containers
+        run: docker-compose pull
+
+      - name: Cache containers
+        uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+        
+      - name: Start containers
+        run: docker-compose up -d
+
+      - name: Display docker logs for openhim config
+        run: docker-compose logs openhim-config
+
+      - name: Display container status
+        run: docker-compose ps
+      
+      - name: Pause for a bit
+        run: sleep 120
+        shell: bash
+        
+      - name: Display logs 
+        if: always()
+        run: docker-compose logs sigdep3 opencr openhim-core
+
+      - name: Wait For SIGDEP3
+        run: docker-compose --profile=utility up  --exit-code-from wait-for-openmrs wait-for-openmrs
+
+      - name: Run General Tests (https://www.postman.com/itechuw/workspace/ci-tap-demo/collection/1525496-efd9833a-2019-4248-813b-ed6f9d516537?action=share&creator=1525496)
+        env: 
+          POSTMAN_COLLECTION: /.postman/1-general-tests.json
+        run: docker-compose --profile test up --exit-code-from newman newman 
+
+      - name: Display logs 
+        if: always()
+        run: docker-compose logs opencr openhim-core
+
+      - name: Stop containers
+        if: always()
+        run: docker-compose down -v

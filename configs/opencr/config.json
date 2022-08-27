@@ -1,22 +1,35 @@
 {
+  "auth": {
+    "secret": "3084e343-71bc-4247-86e4-ea210af82c28",
+    "tokenDuration": 5400
+  },
   "app": {
     "port": 3000,
     "installed": false
   },
+  "clients": [
+    {
+      "id": "openhim",
+      "displayName": "OpenHIM CR Channel"
+    }
+  ],
   "mediator": {
     "api": {
       "username": "root@openhim.org",
       "password": "openhim",
       "apiURL": "https://openhim-core:8080",
       "trustSelfSigned": true,
-      "urn": ""
+      "urn": "urn:mediator:ci_clientregistry"
     },
     "register": true
   },
+  "cronJobs": {
+    "patientReprocessing": "0 21 * * *"
+  },
   "fhirServer": {
-    "baseURL": "http://opencr-fhir:8080/fhir",
     "username": "hapi",
-    "password": "hapi"
+    "password": "hapi",
+    "baseURL": "http://opencr-fhir:8080/fhir"
   },
   "elastic": {
     "server": "http://es:9200",
@@ -25,28 +38,37 @@
     "max_compilations_rate": "10000/1m",
     "index": "patients"
   },
+  "codes": {
+    "goldenRecord": "5c827da5-4858-4f3d-a50c-62ece001efea"
+  },
   "structureDefinition": {
+    "uri": "http://openclientregistry.org/fhir",
     "reportRelationship": "patientreport"
   },
   "matching": {
     "tool": "elasticsearch"
   },
   "systems": {
+    "CRBaseURI": "http://openclientregistry.org/fhir",
+    "internalid": {
+      "uri": [
+        "http://moh.bw.org/ext/identifier/omang",
+        "http://clientregistry.org/openmrs"
+      ],
+      "displayName": "Internal ID"
+    },
     "openmrs": {
       "uri": "http://clientregistry.org/openmrs"
-    },
-    "dhis2": {
-      "uri": "http://clientregistry.org/dhis2"
     },
     "lims": {
       "uri": "http://clientregistry.org/lims"
     },
     "brokenMatch": {
-      "uri": "http://ihris.org/CR/brokenMatch"
+      "uri": "http://clientregistry.org/brokenMatch"
     }
   },
   "sync": {
-    "lastFHIR2ESSync": "1970-01-01T00:00:06"
+    "lastFHIR2ESSync": "2022-09-15T20:19:39"
   },
   "__comments": {
     "matching.tool": "this tells if the app should use mediator algorithms or elasticsearch algorithms for matching, two options mediator and elasticsearch"

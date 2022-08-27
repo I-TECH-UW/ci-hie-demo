@@ -31,7 +31,7 @@ services:
       - 'traefik.http.middlewares.api.stripprefix.forceSlash=false'
 
   sigdep3:
-    image: partnersinhealth/openmrs-server:latest
+    build: ./configs/sigdep3
     depends_on:
       db:
         condition: service_healthy
@@ -46,7 +46,6 @@ services:
       OMRS_CONFIG_HAS_CURRENT_OPENMRS_DATABASE: "true"
       OMRS_DEV_DEBUG_PORT: "1044"
     volumes:
-      - ./configs/sigdep3/distribution:/openmrs/distribution
       - /openmrs/data
     ports:
       - "8081:8080"

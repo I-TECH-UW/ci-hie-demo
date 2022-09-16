@@ -54,11 +54,7 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"",
-							"pm.test(\"Should return heartbeat\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.master).to.exist;",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -89,11 +85,7 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"",
-							"pm.test(\"Should return heartbeat\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.master).to.exist;",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -244,13 +236,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{opencr-ui-url}}/crux/",
+					"raw": "{{opencr-ui-url}}",
 					"host": [
 						"{{opencr-ui-url}}"
-					],
-					"path": [
-						"crux",
-						""
 					]
 				}
 			},

@@ -32,7 +32,7 @@ services:
   sigdep3:
     image: partnersinhealth/openmrs-server:latest
     depends_on:
-      db:
+      sigdep-db:
         condition: service_healthy
     container_name: sigdep3
     hostname: sigdep3

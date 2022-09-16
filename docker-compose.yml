@@ -31,7 +31,7 @@ services:
       - 'traefik.http.middlewares.api.stripprefix.forceSlash=false'
 
   sigdep3:
-    build: ./configs/sigdep3
+    image: partnersinhealth/openmrs-server:latest
     depends_on:
       db:
         condition: service_healthy
@@ -46,6 +46,7 @@ services:
       OMRS_CONFIG_HAS_CURRENT_OPENMRS_DATABASE: "true"
       OMRS_DEV_DEBUG_PORT: "1044"
     volumes:
+      - ./configs/sigdep3/distribution:/openmrs/distribution
       - /openmrs/data
     ports:
       - "8081:8080"
@@ -54,6 +55,7 @@ services:
   db:
     platform: linux/amd64
     image: library/mysql:5.6
+    container_name: sigdep_db
     command: "mysqld \
               --character-set-server=utf8 \
               --collation-server=utf8_general_ci \
@@ -68,8 +70,8 @@ services:
       timeout: 20s
       retries: 10
     volumes:
-      - ./mysql-data:/var/lib/mysql
-      - ./configs/sigdep3/db/sans_les_données.sql:/docker-entrypoint-initdb.d/0_init.sql
+      - ./configs/sigdep3/db:/docker-entrypoint-initdb.d
+      - mysql-data:/var/lib/mysql
     ports:
       - "3306:3306"
 
@@ -244,3 +246,7 @@ services:
       - hie
     healthcheck:
       test: "curl --silent --fail http://es:9200/_cluster/health || exit 1"
+
+volumes:
+  openmrs-data:
+  mysql-data:      

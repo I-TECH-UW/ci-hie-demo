@@ -9,8 +9,12 @@
   },
   "clients": [
     {
-      "id": "openhim",
-      "displayName": "OpenHIM CR Channel"
+      "id": "openmrs",
+      "displayName": "SIGDEP-3"
+    },
+    {
+      "id": "postman",
+      "displayName": "Postman Testing"
     }
   ],
   "mediator": {
@@ -52,7 +56,6 @@
     "CRBaseURI": "http://openclientregistry.org/fhir",
     "internalid": {
       "uri": [
-        "http://moh.bw.org/ext/identifier/omang",
         "http://clientregistry.org/openmrs"
       ],
       "displayName": "Internal ID"
@@ -63,12 +66,16 @@
     "lims": {
       "uri": "http://clientregistry.org/lims"
     },
+    "artnumber": {
+      "uri": "http://clientregistry.org/artnumber",
+      "displayName": "ART Number"
+    },
     "brokenMatch": {
       "uri": "http://clientregistry.org/brokenMatch"
     }
   },
   "sync": {
-    "lastFHIR2ESSync": "2022-09-15T20:19:39"
+    "lastFHIR2ESSync": "2022-09-20T20:40:14"
   },
   "__comments": {
     "matching.tool": "this tells if the app should use mediator algorithms or elasticsearch algorithms for matching, two options mediator and elasticsearch"

@@ -13,7 +13,7 @@ services:
     image: traefik:v2.8.3
     container_name: traefik
     ports:
-      - '80:80'
+    #  - '80:80'
       - '443:443'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -265,9 +265,17 @@ services:
       - o3-backend
     ports:
       - "80:80"
-
+    networks:
+      - hie
+    volumes:
+      - ./configs/o3/nginx.conf:/etc/nginx/nginx.conf
+    # tty: true
+    # stdin_open: true
+    # entrypoint: sh
+    
   o3-frontend:
     container_name: o3-frontend
+    hostname: frontend
     image: openmrs/openmrs-reference-application-3-frontend:${TAG:-nightly}
     environment:
       SPA_PATH: /openmrs/spa
@@ -276,9 +284,11 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/"]
       timeout: 5s
-
+    networks:
+      - hie
   o3-backend:
     container_name: o3-backend
+    hostname: backend
     image: openmrs/openmrs-reference-application-3-backend:${TAG:-nightly}
     depends_on:
       - o3-db
@@ -294,10 +304,11 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:8080/openmrs"]
       timeout: 5s
     volumes:
-      - openmrs-data:/openmrs/data
+      - /openmrs/data
     ports:
       - "8088:8080"
-
+    networks:
+      - hie
   # MariaDB
   o3-db:
     container_name: o3-db
@@ -310,7 +321,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
     volumes:
       - db-data:/var/lib/mysql
-
+    networks:
+      - hie
   ###
   # Utility for waiting for Sigdep3 Bootup
   ###

@@ -58,7 +58,12 @@
       "displayName": "Internal ID"
     },
     "openmrs": {
-      "uri": "http://clientregistry.org/openmrs"
+      "uri": "http://clientregistry.org/openmrs",
+      "displayName": "OpenMRS ID"
+    },
+    "art": {
+      "uri": "http://clientregistry.org/artnumber",
+      "displayName": "ART Number"
     },
     "lims": {
       "uri": "http://clientregistry.org/lims"
@@ -68,7 +73,7 @@
     }
   },
   "sync": {
-    "lastFHIR2ESSync": "2022-09-15T20:19:39"
+    "lastFHIR2ESSync": "2022-11-22T20:46:42"
   },
   "__comments": {
     "matching.tool": "this tells if the app should use mediator algorithms or elasticsearch algorithms for matching, two options mediator and elasticsearch"

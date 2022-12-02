@@ -63,7 +63,11 @@
     },
     "art": {
       "uri": "http://clientregistry.org/artnumber",
-      "displayName": "ART Number"
+      "displayName": "ART ID"
+    },
+    "upi": {
+      "uri": "http://clientregistry.org/upid",
+      "displayName": "UPID"
     },
     "lims": {
       "uri": "http://clientregistry.org/lims"
@@ -73,7 +77,7 @@
     }
   },
   "sync": {
-    "lastFHIR2ESSync": "2022-11-28T12:50:52"
+    "lastFHIR2ESSync": "2022-12-02T18:10:06"
   },
   "__comments": {
     "matching.tool": "this tells if the app should use mediator algorithms or elasticsearch algorithms for matching, two options mediator and elasticsearch"

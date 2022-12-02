@@ -77,19 +77,6 @@
           "extension": [
             {
               "url": "label",
-              "valueString": "fullname"
-            },
-            {
-              "url": "name",
-              "valueString": "name.where(use='official').last().text"
-            }
-          ]
-        },
-        {
-          "url": "http://ihris.org/fhir/StructureDefinition/iHRISReportElement",
-          "extension": [
-            {
-              "url": "label",
               "valueString": "phone"
             },
             {
@@ -116,29 +103,14 @@
           "extension": [
             {
               "url": "label",
-              "valueString": "gender"
+              "valueString": "upi"
             },
             {
               "url": "name",
-              "valueString": "gender"
-            }
-          ]
-        },
-        {
-          "url": "http://ihris.org/fhir/StructureDefinition/iHRISReportElement",
-          "extension": [
-            {
-              "url": "label",
-              "valueString": "email"
-            },
-            {
-              "url": "name",
-              "valueString": "telecom.where(system='email').value"
+              "valueString": "identifier.where(type.text='UPI').value"
             }
           ]
         }
-
-     
 
       ]
     }

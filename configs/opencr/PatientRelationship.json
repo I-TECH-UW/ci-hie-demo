@@ -107,7 +107,7 @@
             },
             {
               "url": "name",
-              "valueString": "identifier.where(type.text='UPI').value"
+              "valueString": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value"
             }
           ]
         }

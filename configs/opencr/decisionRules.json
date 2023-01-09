@@ -48,7 +48,7 @@
       },
       "upi": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(type.text='UPI').value",
+        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
         "espath": "upi",
         "null_handling": "moderate",
         "null_handling_both": "moderate"

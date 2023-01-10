@@ -56,6 +56,295 @@
     },
     "potentialMatchThreshold": 1,
     "autoMatchThreshold": 2
-  }]
+  },
+
+
+  {
+    "matchingType": "deterministic",
+    "fields": {
+      "family": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().family",
+        "espath": "family",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"given": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().given",
+        "espath": "given",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"art": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
+        "espath": "art",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "upi": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
+        "espath": "upi",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      }
+    },
+    "potentialMatchThreshold": 1,
+    "autoMatchThreshold": 2
+  },
+
+
+
+  {
+    "matchingType": "deterministic",
+    "fields": {
+      "family": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().family",
+        "espath": "family",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"given": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().given",
+        "espath": "given",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"art": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
+        "espath": "art",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "upi": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
+        "espath": "upi",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      }
+    },
+    "potentialMatchThreshold": 1,
+    "autoMatchThreshold": 2
+  },
+
+
+
+
+  {
+    "matchingType": "deterministic",
+    "fields": {
+      "family": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().family",
+        "espath": "family",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"given": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().given",
+        "espath": "given",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"art": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
+        "espath": "art",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "upi": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
+        "espath": "upi",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      }
+    },
+    "potentialMatchThreshold": 1,
+    "autoMatchThreshold": 2
+  },
+
+
+
+
+  {
+    "matchingType": "deterministic",
+    "fields": {
+      "family": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().family",
+        "espath": "family",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"given": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().given",
+        "espath": "given",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"art": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
+        "espath": "art",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "upi": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
+        "espath": "upi",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      }
+    },
+    "potentialMatchThreshold": 1,
+    "autoMatchThreshold": 2
+  },
+
+
+  {
+    "matchingType": "deterministic",
+    "fields": {
+      "family": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().family",
+        "espath": "family",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"given": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().given",
+        "espath": "given",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"art": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
+        "espath": "art",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "upi": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
+        "espath": "upi",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      }
+    },
+    "potentialMatchThreshold": 1,
+    "autoMatchThreshold": 2
+  },
+
+
+  {
+    "matchingType": "deterministic",
+    "fields": {
+      "family": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().family",
+        "espath": "family",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"given": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().given",
+        "espath": "given",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"art": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
+        "espath": "art",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "upi": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
+        "espath": "upi",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      }
+    },
+    "potentialMatchThreshold": 1,
+    "autoMatchThreshold": 2
+  },
+
+
+
+  {
+    "matchingType": "deterministic",
+    "fields": {
+      "family": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().family",
+        "espath": "family",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"given": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().given",
+        "espath": "given",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"art": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
+        "espath": "art",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "upi": {
+        "algorithm": "exact",
+        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
+        "espath": "upi",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      }
+    },
+    "potentialMatchThreshold": 1,
+    "autoMatchThreshold": 2
+  }
+,
+
+{
+  "matchingType": "deterministic",
+  "fields": {
+    "family": {
+      "algorithm": "exact",
+      "fhirpath": "name.where(use='official').last().family",
+      "espath": "family",
+      "null_handling": "moderate",
+      "null_handling_both": "moderate"
+    },"given": {
+      "algorithm": "exact",
+      "fhirpath": "name.where(use='official').last().given",
+      "espath": "given",
+      "null_handling": "moderate",
+      "null_handling_both": "moderate"
+    },"art": {
+      "algorithm": "exact",
+      "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
+      "espath": "art",
+      "null_handling": "moderate",
+      "null_handling_both": "moderate"
+    },
+    "upi": {
+      "algorithm": "exact",
+      "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
+      "espath": "upi",
+      "null_handling": "moderate",
+      "null_handling_both": "moderate"
+    }
+  },
+  "potentialMatchThreshold": 1,
+  "autoMatchThreshold": 2
+}
+
+
+]
 }
 

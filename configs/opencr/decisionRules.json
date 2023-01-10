@@ -27,19 +27,7 @@
   "rules": [{
     "matchingType": "deterministic",
     "fields": {
-      "family": {
-        "algorithm": "exact",
-        "fhirpath": "name.where(use='official').last().family",
-        "espath": "family",
-        "null_handling": "moderate",
-        "null_handling_both": "moderate"
-      },"given": {
-        "algorithm": "exact",
-        "fhirpath": "name.where(use='official').last().given",
-        "espath": "given",
-        "null_handling": "moderate",
-        "null_handling_both": "moderate"
-      },"art": {
+    "art": {
         "algorithm": "exact",
         "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
         "espath": "art",
@@ -58,7 +46,6 @@
     "autoMatchThreshold": 2
   },
 
-
   {
     "matchingType": "deterministic",
     "fields": {
@@ -74,10 +61,55 @@
         "espath": "given",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
-      },"art": {
+      },
+      "upi": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
-        "espath": "art",
+        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
+        "espath": "upi",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "gender": {
+        "algorithm": "exact",
+        "fhirpath": "gender",
+        "espath": "gender",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "birthdate": {
+        "algorithm": "exact",
+        "fhirpath": "birthDate",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate",
+        "espath": "birthDate"
+      },
+
+      "phone": {
+        "algorithm": "exact",
+        "fhirpath": "telecom.where(system='phone').value",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate",
+        "espath": "phone"
+      }
+
+    },
+    "potentialMatchThreshold": 1,
+    "autoMatchThreshold": 2
+  },
+  
+  {
+    "matchingType": "deterministic",
+    "fields": {
+      "family": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().family",
+        "espath": "family",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"given": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().given",
+        "espath": "given",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
       },
@@ -87,14 +119,78 @@
         "espath": "upi",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
+      },
+      "gender": {
+        "algorithm": "exact",
+        "fhirpath": "gender",
+        "espath": "gender",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "birthdate": {
+        "algorithm": "exact",
+        "fhirpath": "birthDate",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate",
+        "espath": "birthDate"
+      },
+
+      "phone": {
+        "algorithm": "exact",
+        "fhirpath": "telecom.where(system='phone').value",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate",
+        "espath": "phone"
       }
+
+    },
+    "potentialMatchThreshold": 1,
+    "autoMatchThreshold": 2
+  },
+  {
+    "matchingType": "deterministic",
+    "fields": {
+      "family": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().family",
+        "espath": "family",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },"given": {
+        "algorithm": "exact",
+        "fhirpath": "name.where(use='official').last().given",
+        "espath": "given",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "gender": {
+        "algorithm": "exact",
+        "fhirpath": "gender",
+        "espath": "gender",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate"
+      },
+      "birthdate": {
+        "algorithm": "exact",
+        "fhirpath": "birthDate",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate",
+        "espath": "birthDate"
+      },
+
+      "phone": {
+        "algorithm": "exact",
+        "fhirpath": "telecom.where(system='phone').value",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate",
+        "espath": "phone"
+      }
+
     },
     "potentialMatchThreshold": 1,
     "autoMatchThreshold": 2
   },
 
-
-
   {
     "matchingType": "deterministic",
     "fields": {
@@ -110,28 +206,34 @@
         "espath": "given",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
-      },"art": {
+      },
+      "gender": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
-        "espath": "art",
+        "fhirpath": "gender",
+        "espath": "gender",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
       },
-      "upi": {
+      "birthdate": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
-        "espath": "upi",
+        "fhirpath": "birthDate",
         "null_handling": "moderate",
-        "null_handling_both": "moderate"
+        "null_handling_both": "moderate",
+        "espath": "birthDate"
+      },
+
+      "phone": {
+        "algorithm": "exact",
+        "fhirpath": "telecom.where(system='phone').value",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate",
+        "espath": "phone"
       }
+
     },
     "potentialMatchThreshold": 1,
     "autoMatchThreshold": 2
   },
-
-
-
-
   {
     "matchingType": "deterministic",
     "fields": {
@@ -147,28 +249,34 @@
         "espath": "given",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
-      },"art": {
+      },
+      "gender": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
-        "espath": "art",
+        "fhirpath": "gender",
+        "espath": "gender",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
       },
-      "upi": {
+      "birthdate": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
-        "espath": "upi",
+        "fhirpath": "birthDate",
         "null_handling": "moderate",
-        "null_handling_both": "moderate"
+        "null_handling_both": "moderate",
+        "espath": "birthDate"
+      },
+
+      "phone": {
+        "algorithm": "exact",
+        "fhirpath": "telecom.where(system='phone').value",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate",
+        "espath": "phone"
       }
+
     },
     "potentialMatchThreshold": 1,
     "autoMatchThreshold": 2
   },
-
-
-
-
   {
     "matchingType": "deterministic",
     "fields": {
@@ -184,26 +292,34 @@
         "espath": "given",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
-      },"art": {
+      },
+      "gender": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
-        "espath": "art",
+        "fhirpath": "gender",
+        "espath": "gender",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
       },
-      "upi": {
+      "birthdate": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
-        "espath": "upi",
+        "fhirpath": "birthDate",
         "null_handling": "moderate",
-        "null_handling_both": "moderate"
+        "null_handling_both": "moderate",
+        "espath": "birthDate"
+      },
+
+      "phone": {
+        "algorithm": "exact",
+        "fhirpath": "telecom.where(system='phone').value",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate",
+        "espath": "phone"
       }
+
     },
     "potentialMatchThreshold": 1,
     "autoMatchThreshold": 2
   },
-
-
   {
     "matchingType": "deterministic",
     "fields": {
@@ -219,26 +335,34 @@
         "espath": "given",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
-      },"art": {
+      },
+      "gender": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
-        "espath": "art",
+        "fhirpath": "gender",
+        "espath": "gender",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
       },
-      "upi": {
+      "birthdate": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
-        "espath": "upi",
+        "fhirpath": "birthDate",
         "null_handling": "moderate",
-        "null_handling_both": "moderate"
+        "null_handling_both": "moderate",
+        "espath": "birthDate"
+      },
+
+      "phone": {
+        "algorithm": "exact",
+        "fhirpath": "telecom.where(system='phone').value",
+        "null_handling": "moderate",
+        "null_handling_both": "moderate",
+        "espath": "phone"
       }
+
     },
     "potentialMatchThreshold": 1,
     "autoMatchThreshold": 2
   },
-
-
   {
     "matchingType": "deterministic",
     "fields": {
@@ -254,96 +378,34 @@
         "espath": "given",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
-      },"art": {
+      },
+      "gender": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
-        "espath": "art",
+        "fhirpath": "gender",
+        "espath": "gender",
         "null_handling": "moderate",
         "null_handling_both": "moderate"
       },
-      "upi": {
+      "birthdate": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
-        "espath": "upi",
+        "fhirpath": "birthDate",
         "null_handling": "moderate",
-        "null_handling_both": "moderate"
-      }
-    },
-    "potentialMatchThreshold": 1,
-    "autoMatchThreshold": 2
-  },
-
-
-
-  {
-    "matchingType": "deterministic",
-    "fields": {
-      "family": {
-        "algorithm": "exact",
-        "fhirpath": "name.where(use='official').last().family",
-        "espath": "family",
-        "null_handling": "moderate",
-        "null_handling_both": "moderate"
-      },"given": {
-        "algorithm": "exact",
-        "fhirpath": "name.where(use='official').last().given",
-        "espath": "given",
-        "null_handling": "moderate",
-        "null_handling_both": "moderate"
-      },"art": {
-        "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
-        "espath": "art",
-        "null_handling": "moderate",
-        "null_handling_both": "moderate"
+        "null_handling_both": "moderate",
+        "espath": "birthDate"
       },
-      "upi": {
+
+      "phone": {
         "algorithm": "exact",
-        "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
-        "espath": "upi",
+        "fhirpath": "telecom.where(system='phone').value",
         "null_handling": "moderate",
-        "null_handling_both": "moderate"
+        "null_handling_both": "moderate",
+        "espath": "phone"
       }
+
     },
     "potentialMatchThreshold": 1,
     "autoMatchThreshold": 2
   }
-,
-
-{
-  "matchingType": "deterministic",
-  "fields": {
-    "family": {
-      "algorithm": "exact",
-      "fhirpath": "name.where(use='official').last().family",
-      "espath": "family",
-      "null_handling": "moderate",
-      "null_handling_both": "moderate"
-    },"given": {
-      "algorithm": "exact",
-      "fhirpath": "name.where(use='official').last().given",
-      "espath": "given",
-      "null_handling": "moderate",
-      "null_handling_both": "moderate"
-    },"art": {
-      "algorithm": "exact",
-      "fhirpath": "identifier.where(system='http://clientregistry.org/artnumber').value",
-      "espath": "art",
-      "null_handling": "moderate",
-      "null_handling_both": "moderate"
-    },
-    "upi": {
-      "algorithm": "exact",
-      "fhirpath": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value",
-      "espath": "upi",
-      "null_handling": "moderate",
-      "null_handling_both": "moderate"
-    }
-  },
-  "potentialMatchThreshold": 1,
-  "autoMatchThreshold": 2
-}
-
 
 ]
 }

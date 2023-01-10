@@ -77,19 +77,6 @@
           "extension": [
             {
               "url": "label",
-              "valueString": "fullname"
-            },
-            {
-              "url": "name",
-              "valueString": "name.where(use='official').last().text"
-            }
-          ]
-        },
-        {
-          "url": "http://ihris.org/fhir/StructureDefinition/iHRISReportElement",
-          "extension": [
-            {
-              "url": "label",
               "valueString": "phone"
             },
             {
@@ -116,27 +103,15 @@
           "extension": [
             {
               "url": "label",
-              "valueString": "biometric"
+              "valueString": "upi"
             },
             {
               "url": "name",
-              "valueString": "identifier.where(system='http://isanteplus.org/openmrs/fhir2/6-biometrics-national-reference-code').value"
-            }
-          ]
-        },
-        {
-          "url": "http://ihris.org/fhir/StructureDefinition/iHRISReportElement",
-          "extension": [
-            {
-              "url": "label",
-              "valueString": "codeNational"
-            },
-            {
-              "url": "name",
-              "valueString": "identifier.where(system='http://isanteplus.org/openmrs/fhir2/5-code-national').value"
+              "valueString": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value"
             }
           ]
         }
+
       ]
     }
   ],

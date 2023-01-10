@@ -387,7 +387,7 @@
         "null_handling_both": "moderate"
       },
       "birthdate": {
-        "algorithm": "exact",
+        "algorithm": "jaro-winkler-similarity",
         "fhirpath": "birthDate",
         "null_handling": "moderate",
         "null_handling_both": "moderate",
@@ -395,7 +395,7 @@
       },
 
       "phone": {
-        "algorithm": "exact",
+        "algorithm": "jaro-winkler-similarity",
         "fhirpath": "telecom.where(system='phone').value",
         "null_handling": "moderate",
         "null_handling_both": "moderate",

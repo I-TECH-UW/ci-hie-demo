@@ -9,8 +9,12 @@
   },
   "clients": [
     {
-      "id": "openhim",
-      "displayName": "OpenHIM CR Channel"
+      "id": "openmrs",
+      "displayName": "SIGDEP-3"
+    },
+    {
+      "id": "postman",
+      "displayName": "Postman Testing"
     }
   ],
   "mediator": {
@@ -64,6 +68,10 @@
     },
     "lims": {
       "uri": "http://clientregistry.org/lims"
+    },
+    "artnumber": {
+      "uri": "http://clientregistry.org/artnumber",
+      "displayName": "ART Number"
     },
     "brokenMatch": {
       "uri": "http://clientregistry.org/brokenMatch"

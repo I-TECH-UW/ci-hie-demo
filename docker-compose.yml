@@ -202,6 +202,8 @@ services:
     volumes:
       - ./configs/opencr/config.json:/src/server/config/config_docker.json
       - ./configs/opencr/mediator.json:/src/server/config/mediator.json
+      - ./configs/opencr/decisionRules.json:/src/server/config/decisionRules.json
+      - ./configs/opencr/PatientRelationship.json:/src/resources/Relationships/PatientRelationship.json
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=ci-hie-demo_hie'

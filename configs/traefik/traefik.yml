@@ -1,22 +1,17 @@
 log:
-  level: DEBUG
+  level: INFO
 serversTransport:
   insecureSkipVerify: true
 entryPoints:
   web:
     address: ":80"
-    http:
-      redirections:
-        entrypoint:
-          to: web-secure
-          scheme: https
   web-secure:
     address: :443
 api:
   dashboard: true
   insecure: true
 providers:
-  file:
+  file:     
     watch: true
     directory: /etc/traefik/dynamic_conf
   docker:

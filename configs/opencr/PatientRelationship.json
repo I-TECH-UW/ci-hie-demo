@@ -68,7 +68,7 @@
             },
             {
               "url": "name",
-              "valueString": "name.where(use='official').last().family"
+              "valueString": "name.where(use='official').family"
             }
           ]
         },
@@ -108,6 +108,19 @@
             {
               "url": "name",
               "valueString": "identifier.where(system='http://cote.divore/ext/identifier/UPI').value"
+            }
+          ]
+        },
+        {
+          "url": "http://ihris.org/fhir/StructureDefinition/iHRISReportElement",
+          "extension": [
+            {
+              "url": "label",
+              "valueString": "address"
+            },
+            {
+              "url": "name",
+              "valueString": "address.extension.extension.where(url='http://fhir.openmrs.org/ext/address#address1').valueString"
             }
           ]
         }

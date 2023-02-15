@@ -11,15 +11,16 @@ services:
   ###
   traefik:
     image: traefik:v2.8.3
+    restart: unless-stopped
     container_name: traefik
-    ports:
-    #  - '80:80'
-      - '443:443'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./configs/traefik/traefik.yml:/etc/traefik/traefik.yml
       - ./configs/traefik/certs.yml:/etc/traefik/dynamic_conf/certs.yml
-      - ./configs/traefik/certs:/etc/certs
+      # - ./configs/traefik/certs:/etc/certs
+
+      - certs:/etc/certs
+
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=ci-hie-demo_hie'
@@ -29,8 +30,26 @@ services:
       - 'traefik.http.routers.api.entrypoints=web-secure'
     networks:
       - hie
+    ports:
+      - 80:80
+      - 443:443
+  certbot:
+    image: certbot/certbot:latest
+    container_name: certbot
+    entrypoint: "certbot certonly --standalone -n --agree-tos --email pmanko@uw.edu -d tap-demo.openelisci.org"
+    environment:
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    volumes:
+    - certs:/etc/letsencrypt
+    - letsencrypt:/var/lib/letsencrypt
+    # ports:
+    # - 80:80
+    # - 443:443
+
   sigdep3:
     image: partnersinhealth/openmrs-server:latest
+    restart: unless-stopped
     depends_on:
       sigdep-db:
         condition: service_healthy
@@ -48,7 +67,7 @@ services:
       OMRS_DEV_DEBUG_PORT: "1044"
     volumes:
       - ./configs/sigdep3/distribution:/openmrs/distribution
-      - /openmrs/data
+      - .data/sigdep3:/openmrs/data
     ports:
       - "8090:8080"
       - "1044:1044"
@@ -66,6 +85,7 @@ services:
       - hie
   sigdep-db:
     image: library/mysql:5.6
+    restart: unless-stopped    
     hostname: sigdep-db
     container_name: sigdep-db
     command: "mysqld \
@@ -82,8 +102,8 @@ services:
       timeout: 20s
       retries: 10
     volumes:
-      - ./configs/sigdep3/db:/docker-entrypoint-initdb.d
-      - mysql-data:/var/lib/mysql
+      - ./configs/sigdep3/init-db:/docker-entrypoint-initdb.d
+      - .db/mysql-data:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
@@ -110,6 +130,8 @@ services:
       - hie
     volumes:
       - ./configs/openhim/healthcheck.js:/healthcheck.js
+    ports:
+      - '5001:5001'
     labels:
       - 'traefik.enable=true'
       - 'traefik.docker.network=ci-hie-demo_hie'
@@ -124,18 +146,18 @@ services:
       - 'traefik.http.middlewares.openhim-api.stripprefix.prefixes=/openhim-api'
       - 'traefik.http.middlewares.openhim-api.stripprefix.forceSlash=false'
 
-      - 'traefik.http.services.openhim-http.loadbalancer.server.port=5000'
-      - 'traefik.http.services.openhim-http.loadbalancer.server.scheme=https'
+      - 'traefik.http.services.openhim-http.loadbalancer.server.port=5001'
+      - 'traefik.http.services.openhim-http.loadbalancer.server.scheme=http'
       - 'traefik.http.routers.openhim-http.service=openhim-http'
-      - 'traefik.http.routers.openhim-http.tls=true'
-      - 'traefik.http.routers.openhim-http.entrypoints=web-secure'
+      - 'traefik.http.routers.openhim-http.tls=false'
+      - 'traefik.http.routers.openhim-http.entrypoints=web'
       - 'traefik.http.routers.openhim-http.rule=Host(`tap-demo.openelisci.org`) && PathPrefix(`/openhim-http`)'
       - 'traefik.http.routers.openhim-http.middlewares=openhim-http'
       - 'traefik.http.middlewares.openhim-http.stripprefix.prefixes=/openhim-http'
       - 'traefik.http.middlewares.openhim-http.stripprefix.forceSlash=false'
 
-      - 'traefik.http.services.openhim-ssl.loadbalancer.server.port=5001'
-      - 'traefik.http.services.openhim-ssl.loadbalancer.server.scheme=http'
+      - 'traefik.http.services.openhim-ssl.loadbalancer.server.port=5000'
+      - 'traefik.http.services.openhim-ssl.loadbalancer.server.scheme=https'
       - 'traefik.http.routers.openhim-ssl.service=openhim-ssl'
       - 'traefik.http.routers.openhim-ssl.tls=true'
       - 'traefik.http.routers.openhim-ssl.entrypoints=web-secure'
@@ -143,6 +165,7 @@ services:
       - 'traefik.http.routers.openhim-ssl.middlewares=openhim-ssl'
       - 'traefik.http.middlewares.openhim-ssl.stripprefix.prefixes=/openhim-ssl'
       - 'traefik.http.middlewares.openhim-ssl.stripprefix.forceSlash=false'
+
 
   openhim-console:
     container_name: openhim-console
@@ -181,7 +204,7 @@ services:
     container_name: mongo-db
     image: mongo:3.4
     volumes:
-      - /data/db
+      - .db/openhim:/data/db
     restart: unless-stopped
     networks:
       - hie
@@ -226,7 +249,7 @@ services:
       timeout: 30s
       retries: 3
     volumes:
-      - /data/hapi
+      - .db/opencr:/data/hapi
     #   - ./configs/opencr/application.yml:/data/hapi/application.yaml
     ports:
       - 8081:8080
@@ -250,79 +273,40 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /usr/share/elasticsearch/data
+      - .data/es:/usr/share/elasticsearch/data
     networks:
       - hie
     healthcheck:
       test: "curl --silent --fail http://es:9200/_cluster/health || exit 1"
   
-  ###
-  # OpenMRS 3 Ref App
-  ### 
-  o3:
-    container_name: o3
-    image: openmrs/openmrs-reference-application-3-gateway:${TAG:-nightly}
+  # Kafka Task Runners
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'
+    hostname: zookeeper
+    restart: unless-stopped    
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    volumes:
+      - /data
+    networks:
+      - hie
+  kafka:
+    image: 'bitnami/kafka:latest'
+    hostname: kafka
+    restart: unless-stopped    
+    container_name: kafka
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+    volumes:
+      - /bitnami/kafka
     depends_on:
-      - o3-frontend
-      - o3-backend
-    ports:
-      - "80:80"
-    networks:
-      - hie
-    volumes:
-      - ./configs/o3/nginx.conf:/etc/nginx/nginx.conf
-    # tty: true
-    # stdin_open: true
-    # entrypoint: sh
-    
-  o3-frontend:
-    container_name: o3-frontend
-    hostname: frontend
-    image: openmrs/openmrs-reference-application-3-frontend:${TAG:-nightly}
-    environment:
-      SPA_PATH: /openmrs/spa
-      API_URL: /openmrs
-      SPA_CONFIG_URLS:
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/"]
-      timeout: 5s
-    networks:
-      - hie
-  o3-backend:
-    container_name: o3-backend
-    hostname: backend
-    image: openmrs/openmrs-reference-application-3-backend:${TAG:-nightly}
-    depends_on:
-      - o3-db
-    environment:
-      OMRS_CONFIG_MODULE_WEB_ADMIN: "true"
-      OMRS_CONFIG_AUTO_UPDATE_DATABASE: "true"
-      OMRS_CONFIG_CREATE_TABLES: "true"
-      OMRS_CONFIG_CONNECTION_SERVER: o3-db
-      OMRS_CONFIG_CONNECTION_DATABASE: openmrs
-      OMRS_CONFIG_CONNECTION_USERNAME: ${OPENMRS_DB_USER:-openmrs}
-      OMRS_CONFIG_CONNECTION_PASSWORD: ${OPENMRS_DB_PASSWORD:-openmrs}
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/openmrs"]
-      timeout: 5s
-    volumes:
-      - /openmrs/data
-    ports:
-      - "8088:8080"
-    networks:
-      - hie
-  # MariaDB
-  o3-db:
-    container_name: o3-db
-    image: mariadb:10.8.2
-    command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci"
-    environment:
-      MYSQL_DATABASE: openmrs
-      MYSQL_USER: ${OPENMRS_DB_USER:-openmrs}
-      MYSQL_PASSWORD: ${OPENMRS_DB_PASSWORD:-openmrs}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
-    volumes:
-      - db-data:/var/lib/mysql
+      - zookeeper
+    entrypoint: sh -c 'sleep 30 && /opt/bitnami/scripts/kafka/entrypoint.sh /opt/bitnami/scripts/kafka/run.sh' # prevent zookeeper conflict error
     networks:
       - hie
   ###
@@ -353,6 +337,5 @@ services:
       - hie
 
 volumes:
-  mysql-data: ~  
-  openmrs-data: ~
-  db-data: ~
+  certs: ~
+  letsencrypt: ~

@@ -9,8 +9,12 @@
   },
   "clients": [
     {
-      "id": "openmrs",
-      "displayName": "SIGDEP-3"
+      "id": "sigdep3",
+      "displayName": "SIGDEP3"
+    },
+    {
+      "id": "sigdep3-35",
+      "displayName": "2eme SIGDEP3"
     },
     {
       "id": "postman",
@@ -55,7 +59,11 @@
   "systems": {
     "CRBaseURI": "http://openclientregistry.org/fhir",
     "internalid": {
-      "uri": "http://clientregistry.org/openmrs",
+      "uri": [
+        "http://clientregistry.org/openmrs",
+        "http://tap-cdi.openelis.org/openmrs",
+        "http://35.85.179.171/openmrs"
+      ],
       "displayName": "Internal ID"
     },
     "art": {
@@ -66,8 +74,12 @@
       "uri": "http://cote.divore/ext/identifier/UPI",
       "displayName": "UPID"
     },
-    "lims": {
-      "uri": "http://clientregistry.org/lims"
+    "openmrs": {
+      "uri": [
+        "http://tap-cdi.openelis.org/ext/identifier/openmrs-id",
+        "http://35.85.179.171/ext/identifier/openmrs-id"
+      ],
+      "displayName": "OpenMRS ID"
     },
     "artnumber": {
       "uri": "http://clientregistry.org/artnumber",
@@ -78,7 +90,7 @@
     }
   },
   "sync": {
-    "lastFHIR2ESSync": "2022-12-07T22:42:27"
+    "lastFHIR2ESSync": "2023-03-15T17:38:01"
   },
   "__comments": {
     "matching.tool": "this tells if the app should use mediator algorithms or elasticsearch algorithms for matching, two options mediator and elasticsearch"

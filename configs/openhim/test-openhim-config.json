@@ -84,7 +84,28 @@
       "passwordAlgorithm": "sha512",
       "passwordSalt": "ad7aff63dc3b5c4f347e35d111f0166a",
       "passwordHash": "ef907ec096cb64b9a194d3c17aa19df4dff6538305443395089bb694b6e2913197dd8feb527e254dea75af0eccd10d503cb521468e476c8c9fbdabf65ca53c14"
+    },
+    {
+      "roles": [
+        "test"
+      ],
+      "clientID": "sigdep3",
+      "name": "sigdep3",
+      "passwordAlgorithm": "sha512",
+      "passwordSalt": "de27d55e2d220b335995c3cb04d34f0b",
+      "passwordHash": "11ac9e871fa99f3f150355eee50dfcde7ae7afcbe2cd780d35ee889ad991f6442b576eccfff371f8f952dffb9a39750e217447410e88af0b8e13cd192e537868"
+    },
+    {
+      "roles": [
+        "test"
+      ],
+      "clientID": "sigdep3-35",
+      "name": "sigdep3-35",
+      "passwordAlgorithm": "sha512",
+      "passwordSalt": "f3e864a3051cd54af39d6ecc5a508965",
+      "passwordHash": "06442714da03d321c71c1fa1734d01247eb2ad37047c9b74e89d8353a6d143e0fe4afb4d0fb6266ef50bd1448292cab6bca05d15259eae5ac4df299a20585986"
     }
+
   ],
   "Channels": [
     {

@@ -249,7 +249,7 @@ services:
       timeout: 30s
       retries: 3
     volumes:
-      - .db/opencr:/data/hapi
+      - /data/hapi
     #   - ./configs/opencr/application.yml:/data/hapi/application.yaml
     ports:
       - 8081:8080
@@ -273,7 +273,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - .data/es:/usr/share/elasticsearch/data
+      - /usr/share/elasticsearch/data
     networks:
       - hie
     healthcheck:

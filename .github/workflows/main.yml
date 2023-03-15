@@ -32,10 +32,13 @@ jobs:
         continue-on-error: true
         
       - name: Start containers
-        run: docker-compose up -d
+        run: docker-compose up -d sigdep3 sigdep-db openhim-core mongo-db opencr-fhir opencr openhim-config es
 
       - name: Display docker logs for openhim config
         run: docker-compose logs openhim-config
+
+      - name: Display docker logs for OpenCR
+        run: docker-compose logs opencr opencr-fhir
 
       - name: Display container status
         run: docker-compose ps

@@ -103,7 +103,7 @@ services:
       retries: 10
     volumes:
       - ./configs/sigdep3/init-db:/docker-entrypoint-initdb.d
-      - .db/mysql-data:/var/lib/mysql
+      - .db/sigdep3:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:

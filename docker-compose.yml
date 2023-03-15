@@ -215,7 +215,7 @@ services:
   opencr:
     container_name: opencr
     hostname: opencr
-    image: intrahealth/opencr:latest
+    image: intrahealth/opencr:bac5a14
     restart: unless-stopped
     environment:
       - NODE_ENV=docker

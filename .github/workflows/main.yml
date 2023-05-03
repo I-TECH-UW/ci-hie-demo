@@ -9,7 +9,6 @@ on:
 
 jobs:
   build-test:
-    exclude: /clearVolumes
     timeout-minutes: 20
     runs-on: ubuntu-latest
 

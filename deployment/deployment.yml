@@ -1,0 +1,30 @@
+---
+- name: Ping host
+  hosts: myhosts
+  become: yes
+  remote_user: ubuntu
+  vars:
+    ansible_ssh_private_key_file: /Users/username/.ssh/id_rsa
+  tasks:
+    - name: Install dependencies
+      apt:
+        name:
+          - curl
+          - git
+        state: present
+    - name: Install Git LFS
+      shell: |
+        curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+        apt-get install git-lfs -y
+    - name: Clone GitHub repository
+      git:
+        repo: https://github.com/reagan-meant/SIDEP-3-Docker-Setup.git
+        dest: /home/ubuntu/code/SIDEP-3-Docker-Setup
+    - name: Down Docker project
+      command: docker compose down -v
+      args:
+        chdir: /home/ubuntu/code/SIDEP-3-Docker-Setup
+    - name: Start Docker project
+      command: docker compose up -d
+      args:
+        chdir: /home/ubuntu/code/SIDEP-3-Docker-Setup

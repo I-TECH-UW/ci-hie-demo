@@ -104,6 +104,16 @@
       "passwordAlgorithm": "sha512",
       "passwordSalt": "f3e864a3051cd54af39d6ecc5a508965",
       "passwordHash": "06442714da03d321c71c1fa1734d01247eb2ad37047c9b74e89d8353a6d143e0fe4afb4d0fb6266ef50bd1448292cab6bca05d15259eae5ac4df299a20585986"
+    },
+    {
+      "roles": [
+        "test"
+      ],
+      "clientID": "dbezium",
+      "name": "Streaming pipeline",
+      "passwordAlgorithm": "sha512",
+      "passwordSalt": "af95e6217ff533c8e4c722884c31c9d1",
+      "passwordHash": "15af526235cf7a94eae617a7e23a63c4dac156dac6d1a782c79cf4ac7060ef5785f91fc9329819cd9790cf72c4bea3fa46fc459dece74475cc76790f65e6dfc5"
     }
 
   ],
@@ -162,6 +172,126 @@
         }
       ],
       "priority": 1
+    } ,
+    {
+      "methods": [
+        "GET",
+        "POST",
+        "DELETE",
+        "PUT",
+        "OPTIONS",
+        "HEAD",
+        "TRACE",
+        "CONNECT",
+        "PATCH"
+      ],
+      "type": "http",
+      "allow": [],
+      "whitelist": [],
+      "authType": "public",
+      "matchContentTypes": [],
+      "properties": [],
+      "txViewAcl": [],
+      "txViewFullAcl": [],
+      "txRerunAcl": [],
+      "status": "enabled",
+      "rewriteUrls": false,
+      "addAutoRewriteRules": true,
+      "autoRetryEnabled": false,
+      "autoRetryPeriodMinutes": 60,
+      "routes": [
+        {
+          "type": "http",
+          "status": "enabled",
+          "forwardAuthHeader": false,
+          "name": "Central FHIR server",
+          "secured": false,
+          "host": "fhir.openelis.org.remote",
+          "port": 8080,
+          "path": "",
+          "pathTransform": "",
+          "primary": true,
+          "username": "",
+          "password": ""
+        }
+      ],
+      "requestBody": true,
+      "responseBody": true,
+      "rewriteUrlsConfig": [],
+      "name": "central fhir server",
+      "description": "Access to the central FHIR server",
+      "pollingSchedule": null,
+      "matchContentRegex": null,
+      "matchContentXpath": null,
+      "matchContentValue": null,
+      "matchContentJson": null,
+      "urlPattern": "^/fhir/.*$",
+      "tcpHost": null,
+      "tcpPort": null,
+      "alerts": []
+    },
+    {
+      "methods": [
+        "GET",
+        "POST",
+        "DELETE",
+        "PUT",
+        "OPTIONS",
+        "HEAD",
+        "TRACE",
+        "CONNECT",
+        "PATCH"
+      ],
+      "type": "http",
+      "allow": [
+        "test"
+      ],
+      "whitelist": [],
+      "authType": "private",
+      "matchContentTypes": [],
+      "properties": [],
+      "txViewAcl": [],
+      "txViewFullAcl": [],
+      "txRerunAcl": [],
+      "status": "enabled",
+      "rewriteUrls": false,
+      "addAutoRewriteRules": true,
+      "autoRetryEnabled": false,
+      "autoRetryPeriodMinutes": 60,
+      "updatedBy": {
+        "id": "647f8998cac27d00136c4133",
+        "name": "Super User"
+      },
+      "routes": [
+        {
+          "type": "http",
+          "status": "enabled",
+          "forwardAuthHeader": false,
+          "name": "Central FHIR server",
+          "secured": false,
+          "host": "fhir.openelis.org.remote",
+          "port": 8080,
+          "path": "",
+          "pathTransform": "",
+          "primary": true,
+          "username": "",
+          "password": ""
+        }
+      ],
+      "requestBody": true,
+      "responseBody": true,
+      "rewriteUrlsConfig": [],
+      "description": "Access to the central FHIR server",
+      "pollingSchedule": null,
+      "matchContentRegex": null,
+      "matchContentXpath": null,
+      "matchContentValue": null,
+      "matchContentJson": null,
+      "urlPattern": "^/fhir/.*$",
+      "tcpHost": null,
+      "tcpPort": null,
+      "alerts": [],
+      "name": "Streaming Pipeline"
     }
   ],
   "ContactGroups": []

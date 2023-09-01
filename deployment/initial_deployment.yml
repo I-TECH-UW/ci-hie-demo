@@ -1,0 +1,12 @@
+---
+- name: Ping host
+  hosts: myhosts
+  become: yes
+  remote_user: ubuntu
+  vars:
+    ansible_ssh_private_key_file: /Users/macbookm1/.ssh/id_rsa
+  tasks:
+    - import_tasks: install_docker.yaml
+    - import_tasks: run_sigdep.yaml
+#    - import_tasks: restart_openmrs.yaml
+
